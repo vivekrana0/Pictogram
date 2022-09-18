@@ -3,10 +3,10 @@ from django.shortcuts import render
 # Create your views here.
 
 def home(request):
-    pass
+    return render(request, 'home.html')
 
 def about(request):
-    pass
+    return render(request, 'about.html')
 
-def post_index(request):
-    pass
+# def posts_index(request):
+#     return render(request, '')
