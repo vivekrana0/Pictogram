@@ -8,5 +8,5 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-# def posts_index(request):
-#     return render(request, '')
+def posts_index(request):
+    return render(request, 'posts/index.html')
