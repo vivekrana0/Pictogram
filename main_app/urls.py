@@ -8,6 +8,7 @@ urlpatterns = [
 
     #Posts routes
     path('posts/', views.posts_index, name='post'),
+    path('posts/<int:post_id>/', views.posts_detail, name='detail'),
     
     # Signup Route
 
