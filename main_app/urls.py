@@ -10,5 +10,6 @@ urlpatterns = [
     path('posts/', views.posts_index, name='post'),
     
     # Signup Route
-
+    path('accounts/sigup/', views.signup, name='signup'),
+    # path('accounts/login/', views.login, name='login')
 ]
