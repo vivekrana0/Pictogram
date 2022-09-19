@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>All Posts</h1>
+
+{% for post in posts %}
+    <a href="{% url 'detail' post.user.id %}">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ post.user.username }}</span>
+                <p>{{ post.post_timestamp }}</p>
+                <p>Description: {{ post.description }}</p>
+                {% if post.user.is_active == True %}
+                    <p>Active</p>
+                {% else %}
+                    <p>Inactive</p>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+{% endfor %}
+
+{% endblock %}
