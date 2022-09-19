@@ -1,7 +1,7 @@
-from email.headerregistry import Group
-import imp
+# from email.headerregistry import Group
+# import imp
 from django.contrib import admin
-from main_app.models import User
+from main_app.models import User, Photo, Post, Like, Comment, Follow
 from django.contrib.auth.admin import UserAdmin
 from .forms import UserChangeForm, UserCreationForm
 from django.contrib.auth.models import Group
@@ -31,4 +31,9 @@ class UserAdmin(UserAdmin):
     filter_horizontal = ()
 
 admin.site.register(User, UserAdmin)
+admin.site.register(Photo)
+admin.site.register(Post)
+admin.site.register(Like)
+admin.site.register(Comment)
+admin.site.register(Follow)
 admin.site.unregister(Group)
