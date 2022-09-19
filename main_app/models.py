@@ -60,10 +60,11 @@ class User(AbstractBaseUser):
 class Post(models.Model):
    description = models.TextField(max_length=100)
    user = models.ForeignKey(User, on_delete=models.CASCADE)
-   posted = models.DateTimeField(auto_now_add=True)
+   post_timestamp = models.DateTimeField(auto_now_add=True)
+   likes = models.IntegerField(default=0)
 
    def __str__(self):
-        return self.name
+        return self.description
 
 
 class Like(models.Model):
@@ -73,19 +74,22 @@ class Like(models.Model):
 
 class Comment(models.Model):
     description = models.TextField(max_length=100)
-    user = models.ManyToManyField(User)
-    post = models.ManyToManyField(Post)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comment_user')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comment_post')
+    comment_timestamp = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
-        return 'Comment {} by {}'.format(self.body, self.name)
+        return 'Comment {} by {}'.format(self.description, self.description)
 
 
 class Photo(models.Model):
   url = models.CharField(max_length=200)
   post = models.OneToOneField(Post, on_delete=models.CASCADE)
+
   def __str__(self):
     return f"Photo for post_id: {self.post_id} @{self.url}"
 
 
-class follow(models.Model):
-    following = models.ForeignKey(User, on_delete=models.CASCADE)
-    follower = models.ForeignKey(User, on_delete=models.CASCADE)
+class Follow(models.Model):
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower')
