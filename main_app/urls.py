@@ -16,4 +16,7 @@ urlpatterns = [
     # path('cats/<int:cat_id>/add_photo/', views.add_photo, name='add_photo'),
 
     path('posts/add_post', views.addpost, name='add_post'),
+
+     # api route
+    path('unsplash_api/explore/', views.explore, name='explore'),
 ]
