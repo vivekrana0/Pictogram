@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <title>Pictogram</title>
@@ -16,28 +17,28 @@
       <a class="navbar-brand" href="/" id="icon">Pictogram Icon</a>
       <ul class="navbar-nav">
         <li>
-          <a class="navbar-brand" href="{%url 'home' %}">
+          <a class="navbar-brand navbar-link" href="{%url 'home' %}">
             <span class="material-icons">home</span>Home
           </a>
         </li>
         <li>
-          <a class="navbar-brand" href="{%url 'about' %}">
+          <a class="navbar-brand navbar-link" href="{%url 'about' %}">
             <span class="material-icons">info</span>About
           </a></li>
         <li>
-          <a class="navbar-brand" href="{%url 'post' %}">
+          <a class="navbar-brand navbar-link" href="{%url 'post' %}">
             <span class="material-icons">dashboard</span>Posts
           </a>
         </li>
         <li>
-          <a class="navbar-brand" href="">
+          <a class="navbar-brand navbar-link" href="">
             <span class="material-icons">add_circle</span>Add Posts
           </a>
         </li>
       </ul>
     </div>
   </nav>
-  <main class="container">
+  <main class="container m-auto">
     {% block content %}
     {% endblock %}
   </main>

@@ -1,0 +1,15 @@
+h1 {
+    /* testing */
+    color: blue;
+}
+
+
+
+.navbar-link{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-link .material-icons{
+    margin-right: 4px;
+  }
