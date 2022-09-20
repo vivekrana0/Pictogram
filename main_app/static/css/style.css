@@ -13,3 +13,10 @@ h1 {
 .navbar-link .material-icons{
     margin-right: 4px;
   }
+
+.carousel-container{
+    display: flex;
+    justify-content: start;
+    width: 640px;
+    height: 360px;
+}

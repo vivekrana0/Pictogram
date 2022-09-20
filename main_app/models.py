@@ -62,6 +62,7 @@ class Post(models.Model):
    user = models.ForeignKey(User, on_delete=models.CASCADE)
    post_timestamp = models.DateTimeField(auto_now_add=True)
    likes = models.IntegerField(default=0)
+   photo = models.URLField(max_length=200)
 
    def __str__(self):
         return self.description
@@ -81,13 +82,6 @@ class Comment(models.Model):
     def __str__(self):
         return 'Comment {} by {}'.format(self.description, self.description)
 
-
-class Photo(models.Model):
-  url = models.CharField(max_length=200)
-  post = models.OneToOneField(Post, on_delete=models.CASCADE)
-
-  def __str__(self):
-    return f"Photo for post_id: {self.post_id} @{self.url}"
 
 
 class Follow(models.Model):
