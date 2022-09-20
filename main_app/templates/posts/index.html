@@ -2,11 +2,12 @@
 {% block content %}
 
 <h1>All Posts</h1>
-
+<a href="{% url 'add_post' %}">Add post</a>
 {% for post in posts %}
     <a href="{% url 'detail' post.user.id %}">
         <div class="card">
             <div class="card-content">
+                <img src="{{post.photo}}">
                 <span class="card-title">{{ post.user.username }}</span>
                 <p>{{ post.post_timestamp }}</p>
                 <p>Description: {{ post.description }}</p>

@@ -1,7 +1,8 @@
 from dataclasses import field
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import User
+from .models import Post, User
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 
@@ -36,3 +37,11 @@ class UserChangeForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('email', 'username', 'is_active', 'is_admin')
+
+
+class PostForm(ModelForm):
+    # photo = forms.ImageField(required=True)
+    # description = forms.CharField(required=True)
+    class Meta:
+        model = Post
+        fields = ['description']
