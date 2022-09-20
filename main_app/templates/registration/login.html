@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Log In</h1>
+<h1 class="d-flex justify-content-center">Log In</h1>
 
-<form method="POST" action="{% url 'login' %}">
+<div class="login-container">
+  <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn" value="LOGIN">
+    <label class="form-label">Email:</label>
+    <div class="input-group">
+      {{form.username}}
+    </div>    
+    <label class="form-label">Password:</label>
+    <div class="input-group">
+      {{form.password}}
+    </div>
+    <br>
+    <input type="submit" class="btn btn-primary btn-block" value="LOGIN">
     <input type="hidden" name="next" value="{{ next }}">
   </form>
+</div>
 
 {% endblock %}

@@ -3,8 +3,6 @@ h1 {
     color: blue;
 }
 
-
-
 .navbar-link{
     display: flex;
     align-items: center;
@@ -20,3 +18,10 @@ h1 {
     width: 640px;
     height: 360px;
 }
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
