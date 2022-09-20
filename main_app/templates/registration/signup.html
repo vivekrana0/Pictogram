@@ -1,14 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Sign Up</h1>
+<h1 class="d-flex justify-content-center">Sign Up</h1>
 
 {% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
 
-<form method="post" action="{% url 'signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="SIGNUP">
-</form>
+<div class="login-container">
+  <form method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <label class="form-label">Email:</label>
+    <div class="input-group">
+      {{form.email}}
+    </div>
+    <label class="form-label">Username:</label>
+    <div class="input-group">
+      {{form.username}}
+    </div>  
+    <label class="form-label">Password:</label>
+    <div class="input-group">
+      {{form.password1}}
+    </div>  
+    <label class="form-label">Password Confirmation:</label>
+    <div class="input-group">
+      {{form.password2}}
+    </div>    
+    <br>
+    <input type="submit" class="btn btn-primary" value="SIGNUP">
+  </form>
+</div>
 
 {% endblock %}
