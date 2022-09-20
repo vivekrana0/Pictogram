@@ -11,4 +11,6 @@ urlpatterns = [
     
     # Signup Route
 
+    # api route
+    path('unsplash_api/explore/', views.explore, name='explore'),
 ]
