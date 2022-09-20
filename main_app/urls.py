@@ -13,12 +13,10 @@ urlpatterns = [
     # Signup Route
     path('accounts/sigup/', views.signup, name='signup'),
 
-<<<<<<< HEAD
-    # api route
-    path('unsplash_api/explore/', views.explore, name='explore'),
-=======
     # path('cats/<int:cat_id>/add_photo/', views.add_photo, name='add_photo'),
 
     path('posts/add_post', views.addpost, name='add_post'),
->>>>>>> 11b35411cd7a62d393fd586af8f20dff17e4dd60
+
+     # api route
+    path('unsplash_api/explore/', views.explore, name='explore'),
 ]
