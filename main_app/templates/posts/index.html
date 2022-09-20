@@ -4,20 +4,36 @@
 <h1>All Posts</h1>
 
 {% for post in posts %}
-    <a href="{% url 'detail' post.user.id %}">
-        <div class="card">
-            <div class="card-content">
+    
+        <div class="card" style="width: 18rem;">
+            {% for photo in post.photo_set.all %}
+                <img class="card-img-top" src="" alt="Card image cap" src="{{photo.url}}">
+            {% empty %}
+                <div>No Photos Uploaded</div>
+            {% endfor %}
+
+            <div class="card-body">
+                <p class="card-text">
                 <span class="card-title">{{ post.user.username }}</span>
                 <p>{{ post.post_timestamp }}</p>
                 <p>Description: {{ post.description }}</p>
+
+                <a><span class="material-icons-outlined">favorite_border
+                    </span>{{ post.likes }}</a>
+
+                <a href="{% url 'detail' post.user.id %}">
+                    
+                <p>Description: {{ post.description }}</p></a>
                 {% if post.user.is_active == True %}
                     <p>Active</p>
                 {% else %}
                     <p>Inactive</p>
                 {% endif %}
+                </p>
+
             </div>
         </div>
-    </a>
+    
 {% endfor %}
 
 {% endblock %}
