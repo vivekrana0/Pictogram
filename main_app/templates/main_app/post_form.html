@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if object %}
+    <h1>Edit Post</h1>
+    <img src="{{object.photo}}">
+  {% else %}
+    <h1>Add Post</h1>
+  {% endif %}
+ 
+  <form action="" method="POST">
+
+    {% csrf_token %}
+    <table>
+
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+  </form>
+{% endblock %}
