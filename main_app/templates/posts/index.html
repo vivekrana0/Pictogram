@@ -2,13 +2,13 @@
 {% block content %}
 
 <h1>All Posts</h1>
-<a href="{% url 'add_post' %}">Add post</a>
 {% for post in posts %}
-    <a href="{% url 'detail' post.user.id %}">
+    <a href="{% url 'detail' post.id %}">
         <div class="card">
             <div class="card-content">
                 <img src="{{post.photo}}">
                 <span class="card-title">{{ post.user.username }}</span>
+                <span class="card-title"> <a href="{% url 'like' post.id %}">like</a> {{ post.likes }}</span>
                 <p>{{ post.post_timestamp }}</p>
                 <p>Description: {{ post.description }}</p>
                 {% if post.user.is_active == True %}

@@ -1,7 +1,9 @@
-from .models import Post
+from .models import Post, User, Like
 from django.shortcuts import render, redirect
 from .forms import UserCreationForm, PostForm
 from django.contrib.auth import login
+from django.views.generic import DeleteView, UpdateView
+
 import uuid
 import boto3
 
@@ -52,16 +54,34 @@ def addpost(request):
                     new_post = form.save(commit=False)
                     new_post.user_id = user 
                     new_post.photo = url  
-
-                    new_post.save()
-                    
+                    new_post.save()      
                 except:
                     print('An error occurred uploading file to S3')
-                 
-    
-        
-
     else:
         form = PostForm()
         return render(request, 'posts/addpost.html', {'form': form})
     return redirect('post')
+
+class PostDelete(DeleteView):
+    model = Post
+    success_url = '/posts/'
+
+class PostUpdate(UpdateView):
+    model = Post
+    fields = ['description']
+
+def likes(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+    likes = post.likes
+    check_ifliked = Like.objects.filter(liker=user, post_liked=post).count()
+    if check_ifliked:
+        Like.objects.filter(liker=user, post_liked=post_id).delete()
+        likes = likes - 1
+    else:
+        Like.objects.create(liker=user, post_liked=post)
+        likes = likes + 1
+    post.likes = likes
+    post.save()
+    print(likes)
+    return redirect('detail', post_id=post_id)

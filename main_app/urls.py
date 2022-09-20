@@ -16,4 +16,8 @@ urlpatterns = [
     # path('cats/<int:cat_id>/add_photo/', views.add_photo, name='add_photo'),
 
     path('posts/add_post', views.addpost, name='add_post'),
+    path('posts/<int:pk>/delete', views.PostDelete.as_view(), name='delete'),
+    path('posts/<int:pk>/update', views.PostUpdate.as_view(), name='update'),
+
+    path('path/<int:post_id>/like', views.likes, name='like')
 ]
