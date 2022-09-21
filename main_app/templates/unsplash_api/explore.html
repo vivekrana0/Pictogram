@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore</title>
+</head>
+<body>
+
+    <h1 class="text-center">Explore</h1>
+
+    <h2>Search Images</h2>
+
+    <form action="" method="get">
+
+        {% csrf_token %}
+
+        <input type="text" placeholder="Search Images" name="explored">
+        <button type="submit" value="Search">Search</button>
+    </form>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% for i in results %}
+
+                    <div class="card rounded shadow-lg m-2" style="width: 25rem;">
+                        <img src="{{ i.urls.small }}" alt="">
+                        <a  href="{{i.urls.small }}"> Open Image</a>
+                        <div class="card-body">
+                        <p class="card-text">{{ i.description }}</p>
+                        <hr>
+                        </div>
+                    </div>
+
+                  {% endfor %}
+            </div>

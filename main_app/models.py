@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.urls import reverse
 # Create your models here.
 
 class UserManager(BaseUserManager):
@@ -65,7 +66,9 @@ class Post(models.Model):
    photo = models.URLField(max_length=200)
 
    def __str__(self):
-        return self.description
+    return self.description
+   def get_absolute_url(self):
+    return reverse('detail', kwargs={'post_id': self.id})
 
 
 class Like(models.Model):

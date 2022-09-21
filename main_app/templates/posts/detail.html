@@ -4,6 +4,7 @@
 <h1>Post Details</h1>
 
 
+
 <div class="all-cards">
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" alt="Card image cap" src="{{post.photo}}">
@@ -56,22 +57,14 @@
  
 
 <div class="card-action">
-    <form action="" method="post">
+    <a href="{% url 'update' post.id %}" class="btn">Edit</a>
+    <form action="{% url 'delete' post.id %}" method="post">
         {% csrf_token %}
       <button type="submit" class="btn btn-outline-light">
         <a><span class="material-icons md-28">delete</span></a>
       </button>
     </form>
   </div>
-
-<div class="card-action">
-    <form action="" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-outline-light">
-        <a><span class="material-icons md-28">add_to_photos</span></a>
-        </button>
-    </form>
-</div>
 
 <div class="card-action">
     <form action="" method="post">

@@ -121,3 +121,17 @@ h1 {
     width: 640px;
     height: 360px;
 }
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.navbar-link:active{
+    background: #8461b8;
+  }
+
+.navbar-link:hover{
+    color: #b8b261;
+}

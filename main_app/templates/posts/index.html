@@ -12,7 +12,7 @@
                 <p class="card-text">
                     <span class="card-title"></span>
                     <div id="truncateLongTexts">
-                        <a  id="short-description"  style="text-decoration: none; color: black;" href="{% url 'detail' post.user.id %}">
+                        <a id="short-description"  style="text-decoration: none; color: black;" href="{% url 'detail' post.user.id %}">
                             <div>{{ post.description }}</div>
                         </a>
                     </div>
@@ -32,13 +32,15 @@
                           <div class="col"></div>
                           <div class="col"></div>
                           <div class="col" id="col4">
+                          
                             <a><span class="material-icons md-18"  style="color:red">favorite</span>{{ post.likes }}</a>
-                            <a><span class="material-icons md-18" >favorite_border</span>{{ post.likes }}</a>
-        
+                            <a><span class="material-icons md-18" >favorite_border</span>{{ post.likes }}</a
+                            
                             <a><span class="material-icons md-18" style="color:grey">mode_comment</span></a></div>
                         </div>
                       </div>
                 </p>
+
             </div>
     </div>
 </div>
