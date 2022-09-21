@@ -1,5 +1,4 @@
-
-from .models import Post, User, Like, Comment
+from .models import Follow, Post, User, Like, Comment
 from django.shortcuts import render, redirect
 from .forms import UserCreationForm, PostForm
 from django.contrib.auth import login
@@ -98,5 +97,26 @@ def explore(request):
   return render(request, 'unsplash_api/explore.html', {'results':results})
 
 def profile(request, user_id):
-    posts = Post.objects.filter(user = request.user)
-    return render(request, 'profile.html',{'posts':posts})
+    user = User.objects.get(id=user_id)
+    user_id = user.id
+    posts = Post.objects.filter(user = user_id)
+    posts_count = posts.count()
+    following = Follow.objects.filter(following=user).count()
+    followers = Follow.objects.filter(follower=user).count()
+    is_following = Follow.objects.filter(following = request.user, follower = user).exists()
+    return render(request, 'profile.html',{'posts':posts, 'profile_user': user, 'profile_user_id': user_id, 'following': following, 'followers': followers, 'posts_count': posts_count, 'is_following': is_following})
+
+def search(request):
+    user = request.GET.get('username')
+    profile = User.objects.get(username=user)
+    user_id = profile.id
+    return redirect('profile', user_id=user_id)
+
+def follow(request, profile_user_id):
+    profile_user = User.objects.get(id=profile_user_id)
+    is_following = Follow.objects.filter(following = request.user, follower = profile_user).exists()
+    if is_following:
+        Follow.objects.filter(following = request.user, follower = profile_user).delete()
+    else:
+        Follow.objects.create(following = request.user, follower = profile_user)
+    return redirect('profile', user_id=profile_user_id )
