@@ -31,6 +31,5 @@ urlpatterns = [
     path('search/profile/', views.search, name='search'),
     
     # Follow Logic
-    path('search/follow/<int:profile_user_id>/', views.follow, name='follow')
-
+    path('search/follow/<int:profile_user_id>/', views.follow, name='follow'),
 ]
