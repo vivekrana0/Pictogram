@@ -25,3 +25,10 @@ h1 {
     margin-top: 50px;
 }
 
+.navbar-link:active{
+    background: #8461b8;
+  }
+
+.navbar-link:hover{
+    color: #b8b261;
+}

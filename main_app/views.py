@@ -95,3 +95,6 @@ def explore(request):
   results = image_data['results']
   return render(request, 'unsplash_api/explore.html', {'results':results})
 
+def profile(request, user_id):
+    posts = Post.objects.filter(user = request.user)
+    return render(request, 'profile.html',{'posts':posts})
