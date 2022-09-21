@@ -64,8 +64,15 @@
 
 <!-- Start -->
 <div class="card">
-    <h1 class="d-flex justify-content-center display-4">{{user.username}}'s Profile</h1>
-    <button class="btn btn-primary">Follow</button>
+    <h1 class="d-flex justify-content-center display-4">{{profile_user.username}}'s Profile</h1>
+  {% if user != profile_user %}
+    {% if is_following %}
+      <a href="{% url 'follow' profile_user_id %}" class="btn btn-primary">Unfollow</a>
+    {% else %}
+      <a href="{% url 'follow' profile_user_id %}" class="btn btn-primary">Follow</a>
+    {% endif %}
+  {% else %}
+  {% endif %}
     <div class="d-flex justify-content-center">
         <div class="card text-center">
             <div class="card-body">
@@ -73,7 +80,7 @@
                     <h2>Posts</h2>
                 </div>
                 <div class="card-text">
-                    Insert Number of Posts
+                    {{ posts_count }}
                 </div>
             </div>    
         </div>
@@ -83,7 +90,7 @@
                     <h2>Following</h2>
                 </div>
                 <div class="card-text">
-                    Insert Following
+                  {{ following }}
                 </div>
             </div>    
         </div>
@@ -93,7 +100,7 @@
                     <h2>Followers</h2>
                 </div>
                 <div class="card-text">
-                    Insert Followers
+                    {{ followers }}
                 </div>
             </div>    
         </div>
