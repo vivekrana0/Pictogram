@@ -15,16 +15,22 @@ urlpatterns = [
 
     # path('cats/<int:cat_id>/add_photo/', views.add_photo, name='add_photo'),
     
-    #Post Routes
-    path('posts/add_post', views.addpost, name='add_post'),
-    path('posts/<int:pk>/delete', views.PostDelete.as_view(), name='delete'),
-    path('posts/<int:pk>/update', views.PostUpdate.as_view(), name='update'),
-    path('path/<int:post_id>/like', views.likes, name='like'),
+    # Post Routes
+    path('posts/add_post/', views.addpost, name='add_post'),
+    path('posts/<int:pk>/delete/', views.PostDelete.as_view(), name='delete'),
+    path('posts/<int:pk>/update/', views.PostUpdate.as_view(), name='update'),
+    path('posts/<int:post_id>/like/', views.likes, name='like'),
 
-     # api route
+    # Api route
     path('unsplash_api/explore/', views.explore, name='explore'),
 
-    #Profile Route
+    # Profile Route
     path('profile/<int:user_id>/', views.profile, name='profile'),
+
+    # Search Route
+    path('search/profile/', views.search, name='search'),
+    
+    # Follow Logic
+    path('search/follow/<int:profile_user_id>/', views.follow, name='follow')
 
 ]
