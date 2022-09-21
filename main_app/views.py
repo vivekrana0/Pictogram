@@ -1,4 +1,5 @@
-from .models import Post, User, Like
+
+from .models import Post, User, Like, Comment
 from django.shortcuts import render, redirect
 from .forms import UserCreationForm, PostForm
 from django.contrib.auth import login
@@ -20,11 +21,12 @@ def about(request):
 
 def posts_index(request):
     posts = Post.objects.filter(user=request.user)
-    return render(request, 'posts/index.html',{ 'posts': posts })
+    return render(request, 'posts/index.html',{ 'posts': posts})
 
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
-    return render(request, 'posts/detail.html', {'post': post })
+    comments = Comment.objects.all()
+    return render(request, 'posts/detail.html', {'post': post,'comments': comments })
 
 def signup(request):
     error_message = ''

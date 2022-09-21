@@ -2,23 +2,50 @@
 {% block content %}
 
 <h1>All Posts</h1>
+
 {% for post in posts %}
-    <a href="{% url 'detail' post.id %}">
-        <div class="card">
-            <div class="card-content">
-                <img src="{{post.photo}}">
-                <span class="card-title">{{ post.user.username }}</span>
-                <span class="card-title"> <a href="{% url 'like' post.id %}">like</a> {{ post.likes }}</span>
-                <p>{{ post.post_timestamp }}</p>
-                <p>Description: {{ post.description }}</p>
-                {% if post.user.is_active == True %}
-                    <p>Active</p>
-                {% else %}
-                    <p>Inactive</p>
-                {% endif %}
+
+<div class="all-cards">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" alt="Card image cap" src="{{post.photo}}">
+            <div class="card-body">
+                <p class="card-text">
+                    <span class="card-title"></span>
+                    <div id="truncateLongTexts">
+                        <a id="short-description"  style="text-decoration: none; color: black;" href="{% url 'detail' post.user.id %}">
+                            <div>{{ post.description }}</div>
+                        </a>
+                    </div>
+                    <div class="time-box">{{ post.post_timestamp }}</div>
+                    <div class="container text-center">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                          <div class="col" id="col1">
+                            <div class="name-box" style="font-size: 14px;"">{{ post.user.username }} </div>
+                                <div class="active-box" style="font-size: 10px;">
+                                {% if post.user.is_active == True %}
+                                    <p>Active</p>
+                                {% else %}
+                                    <p>Inactive</p>
+                                {% endif %}
+                                </div>
+                            </div>
+                          <div class="col"></div>
+                          <div class="col"></div>
+                          <div class="col" id="col4">
+                          
+                            <a><span class="material-icons md-18"  style="color:red">favorite</span>{{ post.likes }}</a>
+                            <a><span class="material-icons md-18" >favorite_border</span>{{ post.likes }}</a
+                            
+                            <a><span class="material-icons md-18" style="color:grey">mode_comment</span></a></div>
+                        </div>
+                      </div>
+                </p>
+
             </div>
-        </div>
-    </a>
+    </div>
+</div>
+ 
 {% endfor %}
+
 
 {% endblock %}
