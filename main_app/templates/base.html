@@ -14,7 +14,9 @@
 <body class="d-flex flex-column min-vh-100">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/" id="icon">Pictogram Icon</a>
+      <a class="navbar-brand" href="/" id="icon">
+        <img src="../static/img/logo-1.png" alt="Pictogram logo"width="170" height="55" style='border-radius: 15px'>
+      </a>
       <form action="/search/profile/" method="get" class="row g-2">
         {% csrf_token %}
         <div class="col-auto">
