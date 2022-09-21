@@ -120,3 +120,4 @@ def follow(request, profile_user_id):
     else:
         Follow.objects.create(following = request.user, follower = profile_user)
     return redirect('profile', user_id=profile_user_id )
+
