@@ -24,4 +24,7 @@ urlpatterns = [
      # api route
     path('unsplash_api/explore/', views.explore, name='explore'),
 
+    #Profile Route
+    path('profile/<int:user_id>/', views.profile, name='profile'),
+
 ]
