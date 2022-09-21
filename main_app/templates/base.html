@@ -15,9 +15,10 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/" id="icon">Pictogram Icon</a>
-      <form class="row g-2">
+      <form action="/search/profile/" method="get" class="row g-2">
+        {% csrf_token %}
         <div class="col-auto">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="username">
         </div>
         <div class="col-auto">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

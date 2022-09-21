@@ -106,8 +106,8 @@ def profile(request, user_id):
     is_following = Follow.objects.filter(following = request.user, follower = user).exists()
     return render(request, 'profile.html',{'posts':posts, 'profile_user': user, 'profile_user_id': user_id, 'following': following, 'followers': followers, 'posts_count': posts_count, 'is_following': is_following})
 
-def search(request, user):
-    # user = request.GET.get('username')
+def search(request):
+    user = request.GET.get('username')
     profile = User.objects.get(username=user)
     user_id = profile.id
     return redirect('profile', user_id=user_id)

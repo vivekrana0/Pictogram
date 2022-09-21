@@ -28,7 +28,7 @@ urlpatterns = [
     path('profile/<int:user_id>/', views.profile, name='profile'),
 
     # Search Route
-    path('search/<str:user>/', views.search, name='search'),
+    path('search/profile/', views.search, name='search'),
     
     # Follow Logic
     path('search/follow/<int:profile_user_id>/', views.follow, name='follow')
