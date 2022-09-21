@@ -3,6 +3,8 @@
 
 <h1>Post Details</h1>
 
+
+
 <div class="all-cards">
     <div class="card mb-3">
         <img class="card-img-top" alt="Card image cap" src="{{post.photo}}">
@@ -11,11 +13,13 @@
                     <span class="card-title"></span>
                         <div>{{ post.description }}</div>
                     </div>
-                    <div class="time-box"><small class="text-muted">{{ post.post_timestamp }}</small></div>
+                    <div class="time-box">
+                        <small class="text-muted">{{ post.post_timestamp }}</small>
+                    </div>
                     <div class="container text-center">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                           <div class="col" id="col1">
-                            <div class="name-box" style="font-size: 14px;">{{ post.user.username }} </div>
+                            <div class="name-box" style="font-size: 14px;"">{{ post.user.username }} </div>
                                 <div class="active-box" style="font-size: 10px;">
                                 {% if post.user.is_active == True %}
                                     <p>Active</p>
@@ -25,11 +29,15 @@
                                 </div>
                             </div>
                           <div class="col"></div>
-                          <div class="col"></div>
+                          <div class="col">
+                            <button type="button" class="btn btn-secondary">Like</button>
+                          </div>
                           <div class="col" id="col4">
                             <a><span class="material-icons md-18"  style="color:red">favorite</span>{{ post.likes }}</a>
                             <a><span class="material-icons md-18" >favorite_border</span>{{ post.likes }}</a>
+        
                             <a><span class="material-icons md-18" style="color:grey">mode_comment</span></a></div>
+                            
                         </div>
                       </div>
                 </p>
@@ -40,7 +48,7 @@
                             <div class="input-group-append">
                               <button class="btn btn-outline-secondary" type="button">submit</button>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <ul class="list-group list-group-flush">
                       {% for comment in comments %}
@@ -51,6 +59,7 @@
             </div>
     </div>
 </div>
+ 
 
 <div class="card-action">
     <a href="{% url 'update' post.id %}" class="btn">Edit</a>
@@ -70,5 +79,6 @@
         </button>
     </form>
 </div>
+
 
 {% endblock %}
