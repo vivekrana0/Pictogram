@@ -12,5 +12,8 @@ urlpatterns = [
     
     # Signup Route
     path('accounts/sigup/', views.signup, name='signup'),
-    # path('accounts/login/', views.login, name='login')
+
+    # path('cats/<int:cat_id>/add_photo/', views.add_photo, name='add_photo'),
+
+    path('posts/add_post', views.addpost, name='add_post'),
 ]

@@ -4,30 +4,83 @@
 <h1>Post Details</h1>
 
 
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title">{{ post.user.username }}</span>
-                <p>{{ post.post_timestamp }}</p>
-                <p>Description: {{ post.description }}</p>
-                {% if post.user.is_active == True %}
-                    <p>Active</p>
-                {% else %}
-                    <p>Inactive</p>
-                {% endif %}
+<div class="all-cards">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" alt="Card image cap" src="{{post.photo}}">
+            <div class="card-body">
+                <p class="card-text">
+                    <span class="card-title"></span>
+                        <div>{{ post.description }}</div>
+                    </div>
+                    <div class="time-box">{{ post.post_timestamp }}</div>
+                    <div class="container text-center">
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                          <div class="col" id="col1">
+                            <div class="name-box" style="font-size: 14px;"">{{ post.user.username }} </div>
+                                <div class="active-box" style="font-size: 10px;">
+                                {% if post.user.is_active == True %}
+                                    <p>Active</p>
+                                {% else %}
+                                    <p>Inactive</p>
+                                {% endif %}
+                                </div>
+                            </div>
+                          <div class="col"></div>
+                          <div class="col"></div>
+                          <div class="col" id="col4">
+                            <a><span class="material-icons md-18"  style="color:red">favorite</span>{{ post.likes }}</a>
+                            <a><span class="material-icons md-18" >favorite_border</span>{{ post.likes }}</a>
+        
+                            <a><span class="material-icons md-18" style="color:grey">mode_comment</span></a></div>
+                        </div>
+                      </div>
+                </p>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Make a comment" aria-label="Make a comment" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="button">submit</button>
+                            </div>
+                          </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      {% for comment in comments %}
+                        <li class="list-group-item">{{comment.description}}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
             </div>
-        </div>
-
+    </div>
+</div>
+ 
 
 <div class="card-action">
     <form action="" method="post">
         {% csrf_token %}
-      <button type="submit" class="btn">Remove</button>
+      <button type="submit" class="btn btn-outline-light">
+        <a><span class="material-icons md-28">delete</span></a>
+      </button>
     </form>
   </div>
 
-<form action="" method="post">
-    {% csrf_token %}
-    <input type="submit" class="btn" value="Add">
-</form>
+<div class="card-action">
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-light">
+        <a><span class="material-icons md-28">add_to_photos</span></a>
+        </button>
+    </form>
+</div>
+
+<div class="card-action">
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-light">
+        <a><span class="material-icons md-28">add_to_photos</span></a>
+        </button>
+    </form>
+</div>
+
 
 {% endblock %}
