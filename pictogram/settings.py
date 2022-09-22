@@ -80,8 +80,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pictogram',
-        'USER': 'postgres',
-        'PASSWORD': 'passJaDN'
     }
 }
 
@@ -122,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/feed/'
 LOGOUT_REDIRECT_URL = '/'
 
 # Default primary key field type

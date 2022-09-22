@@ -5,6 +5,8 @@ h1 {
 
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-28 { font-size: 28px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-55 { font-size: 55px; }
 
 
 .navbar-link{
@@ -16,39 +18,12 @@ h1 {
     margin-right: 4px;
   }
 
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
 #truncateLongTexts {
     display: block;
     overflow: hidden !important;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-
 
 #short-description:hover {
     background-color:darkgray;
@@ -95,9 +70,7 @@ h1 {
     justify-content: center;
 }
 
-.name-box{
-    margin-top: 80%;
-}
+
 #id{
     box-sizing: border-box;
     width: 100%;
@@ -114,6 +87,15 @@ h1 {
     align-items: center;
 }
 
+.like-button { 
+    background-color: #000; 
+    color: #FFF;
+  }
+
+.like-button.foo { 
+    background-color: #FFF; 
+    color: #000;
+  }
 
 .carousel-container{
     display: flex;
