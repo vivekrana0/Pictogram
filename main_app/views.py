@@ -3,7 +3,8 @@ from .models import Follow, Post, User, Like, Comment
 from .forms import UserCreationForm, PostForm, CommentForm
 from django.contrib.auth import login
 from django.views.generic import DeleteView, UpdateView
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 import uuid
 import boto3
@@ -23,11 +24,14 @@ def posts_index(request):
     posts = Post.objects.filter(user=request.user)
     return render(request, 'posts/index.html',{ 'posts': posts})
 
+@login_required
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     comments = Comment.objects.filter(post = post_id)
     comment_form = CommentForm()
-    return render(request, 'posts/detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form })
+    user_like = Like.objects.filter(liker = request.user).filter(post_liked_id = post_id)
+    
+    return render(request, 'posts/detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form ,'user_like':user_like})
 
 def signup(request):
     error_message = ''
@@ -42,7 +46,7 @@ def signup(request):
     form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message})
 
-
+@login_required
 def addpost(request):
     user = request.user.id
     if request.method == 'POST':
@@ -66,11 +70,12 @@ def addpost(request):
         return render(request, 'posts/addpost.html', {'form': form})
     return redirect('profile', user_id=user )
 
-class PostDelete(DeleteView):
+
+class PostDelete(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = '/posts/'
 
-class PostUpdate(UpdateView):
+class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
     fields = ['description']
 
@@ -90,6 +95,7 @@ def likes(request, post_id):
     print(likes)
     return redirect('detail', post_id=post_id)
 
+@login_required
 def explore(request):
   baseurl = "https://api.unsplash.com/search/photos?"
   key = 'CNdf8VEf5G3eoTB71-GPl6XGzDK4xK1NwCeT4is8qBI'
@@ -98,6 +104,7 @@ def explore(request):
   results = image_data['results']
   return render(request, 'unsplash_api/explore.html', {'results':results})
 
+@login_required
 def profile(request, user_id):
     user = User.objects.get(id=user_id)
     user_id = user.id
@@ -110,9 +117,12 @@ def profile(request, user_id):
 
 def search(request):
     user = request.GET.get('username')
-    profile = User.objects.get(username=user)
-    user_id = profile.id
-    return redirect('profile', user_id=user_id)
+    try:
+        profile = User.objects.get(username=user)
+        user_id = profile.id
+        return redirect('profile', user_id=user_id)
+    except: 
+        return render(request, 'nouser.html')
 
 def follow(request, profile_user_id):
     profile_user = User.objects.get(id=profile_user_id)
@@ -138,6 +148,7 @@ def commentdelete(request, post_id, comment_id):
     comment.delete()
     return redirect('detail', post_id=post_id)
 
+@login_required
 def feed(request):
     posts_objects = Post.objects.all().exclude(user=request.user)
     posts = posts_objects.order_by('-post_timestamp')

@@ -18,6 +18,13 @@ h1 {
     margin-right: 4px;
   }
 
+#id_description{
+    width: 50em;
+    height:5em;
+}
+
+
+
 #truncateLongTexts {
     display: block;
     overflow: hidden !important;
