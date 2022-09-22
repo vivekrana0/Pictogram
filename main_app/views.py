@@ -1,8 +1,9 @@
 from .models import Follow, Post, User, Like, Comment
 from django.shortcuts import render, redirect
-from .forms import UserCreationForm, PostForm
+from .forms import UserCreationForm, PostForm, CommentForm
 from django.contrib.auth import login
 from django.views.generic import DeleteView, UpdateView
+from django.shortcuts import get_object_or_404
 
 import uuid
 import boto3
@@ -24,8 +25,9 @@ def posts_index(request):
 
 def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
-    comments = Comment.objects.all()
-    return render(request, 'posts/detail.html', {'post': post,'comments': comments })
+    comments = Comment.objects.filter(post = post_id)
+    comment_form = CommentForm()
+    return render(request, 'posts/detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form })
 
 def signup(request):
     error_message = ''
@@ -62,7 +64,7 @@ def addpost(request):
     else:
         form = PostForm()
         return render(request, 'posts/addpost.html', {'form': form})
-    return redirect('post')
+    return redirect('profile', user_id=user )
 
 class PostDelete(DeleteView):
     model = Post
@@ -121,3 +123,25 @@ def follow(request, profile_user_id):
         Follow.objects.create(following = request.user, follower = profile_user)
     return redirect('profile', user_id=profile_user_id )
 
+def add_comment(request, post_id):
+    form = CommentForm(request.POST) 
+    user = request.user.id
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.post_id = post_id
+        new_comment.user_id = user
+        new_comment.save()
+    return redirect('detail', post_id=post_id)
+
+class CommentDelete(DeleteView):
+    model = Comment
+    success_url = '/posts/'
+
+class CommentUpdate(UpdateView):
+    model = Comment
+    fields = ['description']
+
+def feed(request):
+    posts_objects = Post.objects.all().exclude(user=request.user)
+    posts = posts_objects.order_by('-post_timestamp')
+    return render(request, 'posts/feed.html', {'posts': posts})

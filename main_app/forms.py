@@ -2,7 +2,7 @@ from dataclasses import field
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import Post, User
+from .models import Post, User, Comment
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 
@@ -46,3 +46,7 @@ class PostForm(ModelForm):
         model = Post
         fields = ['description']
 
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['description']
