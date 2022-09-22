@@ -1,9 +1,9 @@
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Follow, Post, User, Like, Comment
-from django.shortcuts import render, redirect
 from .forms import UserCreationForm, PostForm, CommentForm
 from django.contrib.auth import login
 from django.views.generic import DeleteView, UpdateView
-from django.shortcuts import get_object_or_404
+
 
 import uuid
 import boto3
@@ -133,15 +133,11 @@ def add_comment(request, post_id):
         new_comment.save()
     return redirect('detail', post_id=post_id)
 
-def delete_comment(request, message_id):
-    comment = request.POST['comment_id']
-    if comment.user == request.user:
-        comment.is_removed = True
-        comment.save()
+def commentdelete(request, post_id, comment_id):
+    comment = Comment.objects.get(id=comment_id)
+    comment.delete()
+    return redirect('detail', post_id=post_id)
 
-class CommentUpdate(UpdateView):
-    model = Comment
-    fields = ['description']
 
 def feed(request):
     posts_objects = Post.objects.all().exclude(user=request.user)

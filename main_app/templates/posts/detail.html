@@ -75,14 +75,15 @@
                     </div>
                     <ul class="list-group list-group-flush">
                       {% for comment in comments %}
-                        <li class="list-group-item">{{comment.description}}</li>
-                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'comment_update' comment.id %}">Edit</a>
-                        <form action="{% url 'delete_comment' post.id %}" method="POST">
-                          {% csrf_token %}
-                          <button type="submit" class="btn btn-outline-light">
-                            <a><span class="material-icons md-28">delete</span></a>
+                        
+                        <li class="list-group-item">{{comment.user}}: <br> {{comment.description}}</li>
+                        <form action="{% url 'comments_delete' post.id comment.id %}" method="POST">
+                          {%csrf_token%}
+                          <button type="submit">
+                            <a><span>delete</span></a>
                           </button>
                         </form>
+                        
                       {% endfor %}
                     </ul>
                       </div>
@@ -91,27 +92,6 @@
           </div>    
   </div>         
 </div>
-
-
-
-
-<div class="card mb-3">
-  <form action="" method="get">
-    {% csrf_token %}
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Make a comment here..." aria-label="Make a comment" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="submit">submit</button>
-      </div>
-    </div>
-  </form>
-  <ul class="list-group list-group-flush">
-    {% for comment in comments %}
-      <li class="list-group-item">{{comment.description}}</li>
-    {% endfor %}
-  </ul>
-</div>
-<br><br>
 
 <script>
   $(".like-button").click(function() {
