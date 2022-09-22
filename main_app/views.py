@@ -6,7 +6,6 @@ from django.views.generic import DeleteView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
 import uuid
 import boto3
 import requests
@@ -30,7 +29,9 @@ def posts_detail(request, post_id):
     post = Post.objects.get(id=post_id)
     comments = Comment.objects.filter(post = post_id)
     comment_form = CommentForm()
-    return render(request, 'posts/detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form })
+    user_like = Like.objects.filter(liker = request.user).filter(post_liked_id = post_id)
+    
+    return render(request, 'posts/detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form ,'user_like':user_like})
 
 def signup(request):
     error_message = ''
