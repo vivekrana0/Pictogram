@@ -138,7 +138,6 @@ def commentdelete(request, post_id, comment_id):
     comment.delete()
     return redirect('detail', post_id=post_id)
 
-
 def feed(request):
     posts_objects = Post.objects.all().exclude(user=request.user)
     posts = posts_objects.order_by('-post_timestamp')
