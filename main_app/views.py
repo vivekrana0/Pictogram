@@ -133,9 +133,11 @@ def add_comment(request, post_id):
         new_comment.save()
     return redirect('detail', post_id=post_id)
 
-class CommentDelete(DeleteView):
-    model = Comment
-    success_url = '/posts/'
+def delete_comment(request, message_id):
+    comment = request.POST['comment_id']
+    if comment.user == request.user:
+        comment.is_removed = True
+        comment.save()
 
 class CommentUpdate(UpdateView):
     model = Comment

@@ -37,7 +37,7 @@ urlpatterns = [
 
     #comment route
     path('posts/<int:post_id>/add_comment/', views.add_comment, name='add_comment'),
-    path('post/<int:pk>/delete/', views.CommentDelete.as_view(), name='comment_delete'),
+    path('post/<int:post_id>/delete_comment/', views.delete_comment, name='delete_comment'),
     path('post/<int:pk>/update/', views.CommentUpdate.as_view(), name='comment_update'),
 
     # Feed Logic

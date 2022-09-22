@@ -58,6 +58,13 @@
                     <ul class="list-group list-group-flush">
                       {% for comment in comments %}
                         <li class="list-group-item">{{comment.description}}</li>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'comment_update' comment.id %}">Edit</a>
+                        <form action="{% url 'delete_comment' post.id %}" method="POST">
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-outline-light">
+                            <a><span class="material-icons md-28">delete</span></a>
+                          </button>
+                        </form>
                       {% endfor %}
                     </ul>
                   </div>
