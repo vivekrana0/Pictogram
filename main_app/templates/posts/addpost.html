@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form action="{% url 'add_post' %}" enctype="multipart/form-data" method="POST" class="card-panel">
-    {% csrf_token %}
-    <div class="input-group" id="photo-file">
-        <input type="file" name="photo-file">
-    </div>                
-    <label class="form-label">Description of Post</label>
-    <div class="input-group">
-        {{ form.description }}
+<div class="border border-dark rounded bg-light m-auto"  style="max-width: 800px;">
+    <h2 class="d-flex justify-content-center p-2">Create New Post</h2>
+    <br>
+    <div class="d-flex justify-content-center">
+        <form action="{% url 'add_post' %}" enctype="multipart/form-data" method="POST" class="card-panel">
+            {% csrf_token %}
+            <div class="input-group" id="photo-file">
+                <input class="form-control" type="file" name="photo-file">
+            </div>                
+            <label class="form-label">Description of Post</label>
+            <div class="input-group input-group-sm mb-3">
+                {{ form.description }}
+            </div>
+            <input type="submit" class="btn btn-primary m-3" value="Upload Photo">
+        </form>
     </div>
-    <br><br>
-    <input type="submit" class="btn btn-primary" value="Upload Photo">
-</form>
+</div>
 
 {% endblock %}
