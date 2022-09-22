@@ -23,6 +23,7 @@
         <img src="/static/img/logo-3.png" alt="Pictogram logo"width="170" height="55" style='border-radius: 15px'>
       </a>
       {% endif %}
+      {% if user.is_authenticated %}
       <form action="/search/profile/" method="get" class="row g-2">
         {% csrf_token %}
         <div class="col-auto">
@@ -32,7 +33,8 @@
           <button class="btn btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
         </div>
       </form>
-
+      {% else %}
+      {% endif %}
       <ul class="navbar-nav">
         {% if user.is_authenticated %}
         <li>
