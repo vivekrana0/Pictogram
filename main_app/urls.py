@@ -35,6 +35,11 @@ urlpatterns = [
     # Follow Logic
     path('search/follow/<int:profile_user_id>/', views.follow, name='follow'),
 
+    #comment route
+    path('posts/<int:post_id>/add_comment/', views.add_comment, name='add_comment'),
+    path('post/<int:pk>/delete/', views.CommentDelete.as_view(), name='comment_delete'),
+    path('post/<int:pk>/update/', views.CommentUpdate.as_view(), name='comment_update'),
+
     # Feed Logic
     path('feed/', views.feed, name='feed'),
 ]
