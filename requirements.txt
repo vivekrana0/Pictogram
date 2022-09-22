@@ -62,7 +62,6 @@ six==1.16.0
 soupsieve==2.3.2.post1
 sqlparse==0.4.2
 systemd-python==234
-ubuntu-advantage-tools==27.9
 ubuntu-drivers-common==0.0.0
 ufw==0.36.1
 unattended-upgrades==0.1
