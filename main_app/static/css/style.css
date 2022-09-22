@@ -14,7 +14,9 @@
 
 #id_description{
     width: 50em;
-    height:5em;
+    height:3em;
+    padding: 12px 20px;
+    border: 2px solid #ccc;
 }
 
 
