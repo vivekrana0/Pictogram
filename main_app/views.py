@@ -122,7 +122,6 @@ def follow(request, profile_user_id):
         Follow.objects.create(following = request.user, follower = profile_user)
     return redirect('profile', user_id=profile_user_id )
 
-
 def feed(request):
     posts_objects = Post.objects.all().exclude(user=request.user)
     posts = posts_objects.order_by('-post_timestamp')
