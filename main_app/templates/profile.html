@@ -14,42 +14,50 @@
 <body class="d-flex flex-column min-vh-100">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
+      {% if user.is_authenticated %}
+      <a class="navbar-brand" href="{% url 'feed' %}" id="icon">
+        <img src="/static/img/logo-3.png" alt="Pictogram logo"width="170" height="55" style='border-radius: 15px'>
+      </a>
+      {% else %}
       <a class="navbar-brand" href="/" id="icon">
         <img src="/static/img/logo-3.png" alt="Pictogram logo"width="170" height="55" style='border-radius: 15px'>
       </a>
-      <form action="{% url 'search' %}" method="get" class="row g-2">
+      {% endif %}
+      <form action="/search/profile/" method="get" class="row g-2">
+        {% csrf_token %}
         <div class="col-auto">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="username">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="username">
         </div>
         <div class="col-auto">
           <button class="btn btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
         </div>
       </form>
+
       <ul class="navbar-nav">
         {% if user.is_authenticated %}
         <li>
           <a class="navbar-brand navbar-link" href="{%url 'feed' %}">
-            <span class="material-icons">dashboard</span>Feed
+            <span class="material-icons md-36">dashboard</span>
           </a>
         </li>
         <li>
           <a class="navbar-brand navbar-link" href="{% url 'add_post' %}">
-            <span class="material-icons">add_circle</span>Add Posts
+            <span class="material-icons md-36">add_to_photos</span>
           </a>
         </li>
         <li>
           <a class="navbar-brand navbar-link" href="{% url 'explore' %}">
-            <span class="material-icons"></span>Explore Images
+            <span class="material-icons md-36">image_search</span>
           </a>
         </li>
         <li>
           <a class="navbar-brand navbar-link" href="{% url 'profile' user.id%}">
-            <span class="material-icons">person</span>Profile
+            <span class="material-icons md-36">person</span>
           </a>
         </li>
         <li>
           <a class="navbar-brand navbar-link" href="{% url 'logout'%}">
-            <span class="material-icons">logout</span>Logout
+            <span class="material-icons md-36">logout</span>Logout
           </a>
         </li>
         {% else %}
