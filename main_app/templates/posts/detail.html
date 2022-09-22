@@ -82,6 +82,7 @@
     {% endfor %}
   </ul>
   <br><br>
+  {% if user == post.user %}
   <div class="d-flex justify-content-end" style="display: inline">
     <a href="{% url 'update' post.id %}">
       <button type="submit" class="btn btn-outline-secondary">
@@ -95,7 +96,8 @@
       </button>
     </form>
   </div>
- 
+ {% else %}
+ {% endif %}
 </div>
 <br><br>
 

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Follow, Post, User, Like, Comment
+from django.shortcuts import render, redirect
 from .forms import UserCreationForm, PostForm, CommentForm
 from django.contrib.auth import login
 from django.views.generic import DeleteView, UpdateView
