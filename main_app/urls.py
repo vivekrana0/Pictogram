@@ -19,6 +19,8 @@ urlpatterns = [
     path('posts/add_post/', views.addpost, name='add_post'),
     path('posts/<int:pk>/delete/', views.PostDelete.as_view(), name='delete'),
     path('posts/<int:pk>/update/', views.PostUpdate.as_view(), name='update'),
+
+    # Like logic
     path('posts/<int:post_id>/like/', views.likes, name='like'),
 
     # Api route
@@ -31,6 +33,8 @@ urlpatterns = [
     path('search/profile/', views.search, name='search'),
     
     # Follow Logic
-    path('search/follow/<int:profile_user_id>/', views.follow, name='follow')
+    path('search/follow/<int:profile_user_id>/', views.follow, name='follow'),
 
+    # Feed Logic
+    path('feed/', views.feed, name='feed'),
 ]
