@@ -72,6 +72,20 @@
                           </form>
 
                         </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      {% for comment in comments %}
+                        
+                        <li class="list-group-item">{{comment.user}}: <br> {{comment.description}}</li>
+                        <form action="{% url 'comments_delete' post.id comment.id %}" method="POST">
+                          {%csrf_token%}
+                          <button type="submit">
+                            <a><span>delete</span></a>
+                          </button>
+                        </form>
+                        
+                      {% endfor %}
+                    </ul>
                       </div>
                   </div>
               </p>    
@@ -79,26 +93,6 @@
   </div>         
 </div>
 
-
-
-
-<div class="card mb-3">
-  <form action="" method="get">
-    {% csrf_token %}
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Make a comment here..." aria-label="Make a comment" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="submit">submit</button>
-      </div>
-    </div>
-  </form>
-  <ul class="list-group list-group-flush">
-    {% for comment in comments %}
-      <li class="list-group-item">{{comment.description}}</li>
-    {% endfor %}
-  </ul>
-</div>
-<br><br>
 
 <script>
   $(".like-button").click(function() {
