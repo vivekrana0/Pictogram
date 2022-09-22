@@ -72,12 +72,15 @@
       <li class="list-group-item">
         {{comment.description}}
         <div class="text-muted" style="font-size: 10px; text-align: right;">{{ comment.user.username }}</div>
+      {% if user == comment.user or user == post.user %}
       <form action="{% url 'comments_delete' post.id comment.id %}" method="POST">
           {%csrf_token%}
           <button type="submit">
             <a><span>delete</span></a>
           </button>
       </form> 
+      {% else %}
+      {% endif %}
       </li>
     {% endfor %}
   </ul>

@@ -41,7 +41,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')
+            return redirect('/feed/')
         else:
             error_message = 'Invalid Input'
     form = UserCreationForm()
