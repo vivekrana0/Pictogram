@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+<br>
+<br>
 <div class="all-cards">
   <div class="d-flex flex-wrap">
       {% for post in posts %}
@@ -11,7 +12,7 @@
                   <p class="card-text">
                       <span class="card-title"></span>
                       <div id="truncateLongTexts">
-                          <a id="short-description"  style="text-decoration: none; color: black;" href="{% url 'detail' post.user.id %}">
+                          <a id="short-description"  style="text-decoration: none; color: black;" href="{% url 'detail' post.id %}">
                               <div>{{ post.description }}</div>
                           </a>
                       </div>
@@ -23,7 +24,7 @@
                             </div>
                             <div class="col"></div>
                             <div class="col"></div>
-                            <div class="col" id="col4">
+                            <div class="col" id="col4">      
                               <a><span class="material-icons md-18"  style="color:red">favorite</span>{{ post.likes }}</a>
                               <a><span class="material-icons md-18" >favorite_border</span>{{ post.likes }}</a>
                             </div>
