@@ -38,42 +38,20 @@
                               {% endif %}
                             </div>
                           </div>
-
-                          <div class="col-4" style="display: flex; align-items: flex-end;">
-                            <div class="col">
-                              <a href="{% url 'like' post.id %}" type="button" class="btn btn-secondary">Like</a>
-                            </div>
-                            {% if post.user.check_ifliked == True %}
+                          <div class="col-4 d-flex justify-content-end" style="display: flex; align-items: flex-end;">
+                            <!--<Method 1 for if...else...>-->
+            
+                            {% if user_like.count > 0 %}
                               <a href="{% url 'like' post.id %}" type="button" style="text-decoration: none;"><span class="material-icons md-18"  style="color:red">favorite</span>{{ post.likes }}</a>
                             {% else %}
                               <a href="{% url 'like' post.id %}" type="button" style="text-decoration: none;"><span class="material-icons md-18" >favorite_border</span>{{ post.likes }}</a>
                             {% endif %}
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                            <button type="button" class="like-button" data-toggle="button" aria-pressed="false" autocomplete="off">
-                              Single toggle
-                            </button>
+                      
                             <a><span class="material-icons md-18" style="color:grey" >mode_comment</span></a>
                           </div>
                         </div>
-
                       </div>
                 </p>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-header">
-                        <div class="input-group mb-3">
-                          <form action="{% url 'add_comment' post.id %}" method="POST">
-                            {% csrf_token %}
-                          
-                            {{ comment_form.as_p}}
-
-                            <div class="input-group-append">
-                              <button class="btn btn-outline-secondary" type="submit">submit</button>
-                            </div>
-                          </form>
-
-                        </div>
-                      </div>
-                  </div>
               </p>    
           </div>    
   </div>         
@@ -81,28 +59,44 @@
 
 
 
-
-<div class="card mb-3">
-  <form action="" method="get">
+<hr>
+  <form action="{% url 'add_comment' post.id %}" method="POST">
     {% csrf_token %}
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Make a comment here..." aria-label="Make a comment" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="submit">submit</button>
+    <label class="form-label">Leave your comments here...</label>
+      <div class="input-group input-group-sm mb-3">
+        {{comment_form.description}}
       </div>
-    </div>
+      
+      <div class="input-group-append d-flex justify-content-end" style="display: flex; align-items: flex-end;">
+          <button class="btn btn-outline-secondary" type="submit">submit</button>
+      </div>
+      <br>
   </form>
   <ul class="list-group list-group-flush">
     {% for comment in comments %}
-      <li class="list-group-item">{{comment.description}}</li>
+      <li class="list-group-item">
+        {{comment.description}} 
+        <div class="text-muted" style="font-size: 10px; text-align: right;">{{ comment.user.username }}</div>
+      </li>
     {% endfor %}
   </ul>
+  <br><br>
+  <div class="d-flex justify-content-end" style="display: inline">
+    <a href="{% url 'update' post.id %}">
+      <button type="submit" class="btn btn-outline-secondary">
+        <span class="material-icons md-28">update</span>
+      </button>
+    </a>
+    <form action="{% url 'delete' post.id %}" method="post">
+        {% csrf_token %}
+      <button type="submit" class="btn btn-outline-secondary">
+        <a><span class="material-icons md-28">delete</span></a>
+      </button>
+    </form>
+  </div>
+ 
 </div>
 <br><br>
 
-<script>
-  $(".like-button").click(function() {
-    $(this).toggleClass('foo');
-  });
-</script>
+
 {% endblock %}

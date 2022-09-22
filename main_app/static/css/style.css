@@ -18,6 +18,13 @@ h1 {
     margin-right: 4px;
   }
 
+#id_description{
+    width: 50em;
+    height:5em;
+}
+
+
+
 #truncateLongTexts {
     display: block;
     overflow: hidden !important;
@@ -100,8 +107,7 @@ h1 {
 .carousel-container{
     display: flex;
     justify-content: start;
-    width: 640px;
-    height: 360px;
+    max-width: 640px;
 }
 
 .login-container{
