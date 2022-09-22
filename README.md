@@ -43,6 +43,6 @@ Live Link <----Insert the link
 
 ### Team Members
 - Edwin Hawk Yu
-- 
+- Wasim Okadia
 - 
 - 
