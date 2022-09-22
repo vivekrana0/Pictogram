@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <br>
-<br>
 <p class="text-muted">  ᕙ(^▿^-ᕙ)Try searching for more pictos for more fun with us!!!</p>
-<br>
     <form action="" method="get">
         {% csrf_token %}
         <div class="input-group mb-3">
@@ -14,19 +12,18 @@
           </div>
     </form>
     <br>
-    <br>
-      <div class="d-flex flex-wrap justify-content-center">
-        {% for i in results %}
-        <div class="card bg-light m-3" style="width: 300px;">
-            <img class="card-img-top" src="{{ i.urls.small }}" alt="Card image cap">
-            <div class="card-body">
-              <p class="text-muted">{{ i.description }}</p>
-              <a href="{{i.urls.small }}">
-                <button href="{{i.urls.small }}" type="button" class="btn btn-outline-secondary" style="float: right;">Picto Details</button>
-              </a>
-            </div>
+    <div class="d-flex flex-wrap justify-content-center">
+      {% for i in results %}
+      <div class="card bg-light m-3" style="width: 300px;">
+          <img class="card-img-top" src="{{ i.urls.small }}" alt="Card image cap">
+          <div class="card-body">
+            <p class="text-muted">{{ i.description }}</p>
+            <a href="{{i.urls.small }}">
+              <button href="{{i.urls.small }}" type="button" class="btn btn-outline-secondary" style="float: right;">Picto Details</button>
+            </a>
           </div>
-        {% endfor %}
-    </div>
+        </div>
+      {% endfor %}
+  </div>
     
  {% endblock %}
