@@ -13,8 +13,6 @@ urlpatterns = [
     # Signup Route
     path('accounts/sigup/', views.signup, name='signup'),
 
-    # path('cats/<int:cat_id>/add_photo/', views.add_photo, name='add_photo'),
-    
     # Post Routes
     path('posts/add_post/', views.addpost, name='add_post'),
     path('posts/<int:pk>/delete/', views.PostDelete.as_view(), name='delete'),
@@ -37,8 +35,7 @@ urlpatterns = [
 
     #comment route
     path('posts/<int:post_id>/add_comment/', views.add_comment, name='add_comment'),
-    path('post/<int:pk>/delete/', views.CommentDelete.as_view(), name='comment_delete'),
-    path('post/<int:pk>/update/', views.CommentUpdate.as_view(), name='comment_update'),
+    path('posts/<int:comment_id>/delete/', views.CommentUpdate.as_view, name='comment_delete'),
 
     # Feed Logic
     path('feed/', views.feed, name='feed'),

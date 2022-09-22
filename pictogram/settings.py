@@ -121,5 +121,3 @@ import django_heroku
 
 django_heroku.settings(locals())
 
-
-# requests.get('{baseurl}/query={variable}{key}'.format(baseurl=baseurl, variable=variable, key=key)).json()
