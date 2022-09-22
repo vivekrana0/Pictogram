@@ -8,65 +8,49 @@
   <div class="card mb-3">
       <img class="card-img-top" alt="Card image cap" src="{{post.photo}}">
           <div class="card-body">
-              <p class="card-text">
-                <span class="card-title"></span>
-                  <div class="row no-gutters">
-                    <div class="col">
-                      <div style="text-align: center;">
-                        {{ post.description }}
-                      </div>
-                      <br>
-                      <br>
-                      <div class="time-box">
-                        <small class="text-muted">{{ post.post_timestamp }}</small>
-                      </div>
-                      <br><br>
-                      <div class="row">
-                        <div class="row justify-content-between">
-                          <div class="col-4" style="text-align:center ;">
-                            <div class="name-box" style="font-size: 14px;">
-                              {{ post.user.username }}
-                            </div>
-                            <div class="text-muted" style="font-size: 10px;">
-                              {% if post.user.is_active == True %}
-                                  <p>Active</p>
-                              {% else %}
-                                  <p>Inactive</p>
-                              {% endif %}
-                            </div>
-                          </div>
-                          <div class="col-4 d-flex justify-content-end" style="display: flex; align-items: flex-end;">
-                            <!--<Method 1 for if...else...>-->
-            
-                            {% if user_like.count > 0 %}
-                              <a href="{% url 'like' post.id %}" type="button" style="text-decoration: none;"><span class="material-icons md-18"  style="color:red">favorite</span>{{ post.likes }}</a>
-                            {% else %}
-                              <a href="{% url 'like' post.id %}" type="button" style="text-decoration: none;"><span class="material-icons md-18" >favorite_border</span>{{ post.likes }}</a>
-                            {% endif %}
-                      
-                            <a><span class="material-icons md-18" style="color:grey" >mode_comment</span></a>
-                          </div>
+            <span class="card-title"></span>
+              <div class="row no-gutters">
+                  <div style="text-align: center; font-family: 'Poppins', sans-serif;">
+                    {{ post.description }}
+                  </div>
+                  <br>
+                  <div class="time-box">
+                    <small class="text-muted">Posted {{ post.post_timestamp }}</small>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="row justify-content-between">
+                      <div class="col-4" style="text-align:center ;">
+                        <div class="name-box" style="font-family: 'Noto Sans', sans-serif;">
+                          <a href="{% url 'profile' user.id%}" style="text-decoration: none; color:black;font-weight: bold;">{{ post.user.username }}</a>
                         </div>
                       </div>
-                </p>
-              </p>    
+                      <div class="col-4 d-flex justify-content-end" style="display: flex; align-items: flex-end;">
+                        <!--<Method 1 for if...else...>-->
+        
+                        {% if user_like.count > 0 %}
+                          <a href="{% url 'like' post.id %}" type="button" style="text-decoration: none; color:black; margin-right: 1em;"><span class="material-icons md-18"  style="color:red">favorite</span>{{ post.likes }}</a>
+                        {% else %}
+                          <a href="{% url 'like' post.id %}" type="button" style="text-decoration: none; color:black; margin-right: 1em;"><span class="material-icons md-18" >favorite_border</span>{{ post.likes }}</a>
+                        {% endif %}
+                        <a><span class="material-icons md-18" style="color:grey" >mode_comment</span></a>
+                      </div>
+                    </div>
+                  </div>
           </div>    
   </div>         
 </div>
 
-<hr>
-  <form action="{% url 'add_comment' post.id %}" method="POST">
-    {% csrf_token %}
-    <label class="form-label">Leave your comments here...</label>
-      <div class="input-group input-group-sm mb-3">
-        {{comment_form.description}}
+<form action="{% url 'add_comment' post.id %}" method="POST">
+  {% csrf_token %}
+  <label class="form-label" style="font-family: 'Noto Sans', sans-serif;">(¬‿¬)Leave your comments on this post....</label>
+    <div class="input-group input-group-sm mb-3" style="font-family: 'Noto Sans', sans-serif;">
+      {{comment_form.description}}
+      <div class=" d-flex justify-content-end" style="width:100%">
+        <button class="btn btn-outline-secondary" type="submit">submit</button>
       </div>
-      
-      <div class="input-group-append d-flex justify-content-end" style="display: flex; align-items: flex-end;">
-          <button class="btn btn-outline-secondary" type="submit">submit</button>
-      </div>
-      <br>
-  </form>
+    </div>
+</form>
   <ul class="list-group list-group-flush">
     {% for comment in comments %}
       <li class="list-group-item">
@@ -84,7 +68,7 @@
       </li>
     {% endfor %}
   </ul>
-  <br><br>
+  <br>
   {% if user == post.user %}
   <div class="d-flex justify-content-end" style="display: inline">
     <a href="{% url 'update' post.id %}">
