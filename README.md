@@ -31,7 +31,10 @@ Access the app through the link below:
 Live Link <----Insert the link
 
 ## Features
-
+- Unsplash API:
+    The Unsplash API provids us with over 3 million free high-resolution images that are brought to us by the world’s most generous community of photographers.
+    Our app uses the Usplah Api to provide the users with the ability to search through and locate the perfect image to use for thier post.
+<img src='https://i.imgur.com/mhy1mdv.png'>
 ## Code Examples
 
 ## Future enhancements
@@ -40,6 +43,6 @@ Live Link <----Insert the link
 
 ### Team Members
 - Edwin Hawk Yu
-- 
+- Wasim Okadia
 - 
 - 
