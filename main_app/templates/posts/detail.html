@@ -30,7 +30,7 @@
                             </div>
                           <div class="col"></div>
                           <div class="col">
-                            <button type="button" class="btn btn-secondary">Like</button>
+                            <a href="{% url 'like' post.id %}" type="button" class="btn btn-secondary">Like</a>
                           </div>
                           <div class="col" id="col4">
                             <a><span class="material-icons md-18"  style="color:red">favorite</span>{{ post.likes }}</a>
