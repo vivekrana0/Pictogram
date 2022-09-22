@@ -1,34 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <h1 class="text-center">Explore</h1>
-
-    <h2>Search Images</h2>
-
+<br>
+<br>
+<p class="text-muted">  ᕙ(^▿^-ᕙ)Try searching for more pictos for more fun with us!!!</p>
+<br>
     <form action="" method="get">
-
         {% csrf_token %}
-
-        <input type="text" placeholder="Search Images" name="explored">
-        <button type="submit" value="Search">Search</button>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Put some keywords here..." aria-label="Search Images" aria-describedby="basic-addon2" name="explored">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">Search</button>
+            </div>
+          </div>
     </form>
     <br>
     <br>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                {% for i in results %}
-
-                    <div class="card rounded shadow-lg m-2" style="width: 25rem;">
-                        <img src="{{ i.urls.small }}" alt="">
-                        <a  href="{{i.urls.small }}"> Open Image</a>
-                        <div class="card-body">
-                        <p class="card-text">{{ i.description }}</p>
-                        <hr>
-                        </div>
-                    </div>
-
-                  {% endfor %}
-            </div>
+<div class="d-flex flex-wrap">
+    {% for i in results %}
+    <div class="card bg-light m-3" style="width: 300px;">
+        <img class="card-img-top" src="{{ i.urls.small }}" alt="Card image cap">
+        <div class="card-body">
+          <p class="text-muted">{{ i.description }}</p>
+          <a href="{{i.urls.small }}">
+            <button href="{{i.urls.small }}" type="button" class="btn btn-outline-secondary" style="float: right;">Picto Details</button>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+    
  {% endblock %}

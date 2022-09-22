@@ -22,7 +22,7 @@
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="username">
         </div>
         <div class="col-auto">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
         </div>
       </form>
       <ul class="navbar-nav">
@@ -124,6 +124,20 @@
                 </div>
                 <a href="{% url 'detail' post.id %}" class="stretched-link"></a>
             </div>
+    </div>
+    <div class="card-action">
+      <a href="{% url 'update' post.id %}">
+        <button type="submit" class="btn btn-outline-light">
+          <span class="material-icons md-28">update</span>
+        </button>
+      </a>
+      
+      <form action="{% url 'delete' post.id %}" method="post">
+          {% csrf_token %}
+        <button type="submit" class="btn btn-outline-light">
+          <a><span class="material-icons md-28">delete</span></a>
+        </button>
+      </form>
     </div>
     {% endfor %}
 </div>
