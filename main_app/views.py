@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import UserCreationForm, PostForm, CommentForm
 from django.contrib.auth import login
 from django.views.generic import DeleteView, UpdateView
+from django.shortcuts import get_object_or_404
 
 import uuid
 import boto3
@@ -63,7 +64,7 @@ def addpost(request):
     else:
         form = PostForm()
         return render(request, 'posts/addpost.html', {'form': form})
-    return redirect('post')
+    return redirect('profile', user_id=user )
 
 class PostDelete(DeleteView):
     model = Post
@@ -140,3 +141,7 @@ class CommentUpdate(UpdateView):
     model = Comment
     fields = ['description']
 
+def feed(request):
+    posts_objects = Post.objects.all().exclude(user=request.user)
+    posts = posts_objects.order_by('-post_timestamp')
+    return render(request, 'posts/feed.html', {'posts': posts})

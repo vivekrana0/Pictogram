@@ -19,6 +19,8 @@ urlpatterns = [
     path('posts/add_post/', views.addpost, name='add_post'),
     path('posts/<int:pk>/delete/', views.PostDelete.as_view(), name='delete'),
     path('posts/<int:pk>/update/', views.PostUpdate.as_view(), name='update'),
+
+    # Like logic
     path('posts/<int:post_id>/like/', views.likes, name='like'),
 
     # Api route
@@ -38,4 +40,6 @@ urlpatterns = [
     path('post/<int:pk>/delete/', views.CommentDelete.as_view(), name='comment_delete'),
     path('post/<int:pk>/update/', views.CommentUpdate.as_view(), name='comment_update'),
 
+    # Feed Logic
+    path('feed/', views.feed, name='feed'),
 ]
