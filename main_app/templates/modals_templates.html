@@ -1,0 +1,35 @@
+
+<!-- Button -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
+    Create New Post
+  </button>
+  
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-label">Create New Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <form action="{% url 'add_post' %}" enctype="multipart/form-data" method="POST" class="card-panel">
+                            {% csrf_token %}
+                            <div class="input-group" id="photo-file">
+                                <input type="file" name="photo-file">
+                            </div>                
+                            <label class="form-label">Description of Post</label>
+                            <div class="input-group">
+                                {{ form.description }}
+                            </div>
+                            <br><br>
+                            <input type="submit" class="btn btn-primary" value="Upload Photo">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
