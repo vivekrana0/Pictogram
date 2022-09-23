@@ -78,7 +78,7 @@ Every user has a profile that record all their posts, and it also stores the val
 
 - The code snippet below is used to implement pulling 30 different images from the API Unsplash and adding them to the explore template.
 
-```
+```python
 def explore(request):
   baseurl = "https://api.unsplash.com/search/photos?"
   key = 'CNdf8VEf5G3eoTB71-GPl6XGzDK4xK1NwCeT4is8qBI'
@@ -89,7 +89,7 @@ def explore(request):
 ```
 - The code snippet below is used to determine if a post has been liked by a specific user. This function also provides the count of likes per post and is used in the detail template.
 
-```
+```python
 def likes(request, post_id):
     user = request.user
     post = Post.objects.get(id=post_id)
