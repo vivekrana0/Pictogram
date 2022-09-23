@@ -22,7 +22,7 @@
                     <div class="row justify-content-between">
                       <div class="col-4" style="text-align:center ;">
                         <div class="name-box" style="font-family: 'Noto Sans', sans-serif;">
-                          <a href="{% url 'profile' user.id%}" style="text-decoration: none; color:black;font-weight: bold;">{{ post.user.username }}</a>
+                          <a href="{% url 'profile' post.user.id%}" style="text-decoration: none; color:black;font-weight: bold;">{{ post.user.username }}</a>
                         </div>
                       </div>
                       <div class="col-4 d-flex justify-content-end" style="display: flex; align-items: flex-end;">
@@ -59,7 +59,7 @@
       {% if user == comment.user or user == post.user %}
       <form action="{% url 'comments_delete' post.id comment.id %}" method="POST">
           {%csrf_token%}
-          <button type="submit">
+          <button class="btn btn-outline-secondary" type="submit">
             <a><span>delete</span></a>
           </button>
       </form> 
