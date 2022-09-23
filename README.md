@@ -3,7 +3,7 @@
 <br>
 
 ## Introduction
----
+
 In the year of 2022, it is a common sight to see individuals using a social media application on a electronic device of their choice. Examples of these social media apps are:
 
 - Instagram
@@ -18,7 +18,7 @@ Pictogram will have similar functionalities and uses an API to replicate the exp
 <br>
 
 ## Tech Stack
----
+
 - <b>Django</b>
 - <b>PostgreSQL</b>
 - <b>Bootstrap</b>
@@ -26,13 +26,13 @@ Pictogram will have similar functionalities and uses an API to replicate the exp
 - <b>Unsplash API</b>
 
 ## Getting Started
----
+
 Lets get started!
 Access the app through the link below:
 ### [Live Link](https://pictogram-webapp.herokuapp.com/)
 
 ## Features
----
+
 ### Home Page
 <img src='https://imgur.com/Shnayjs.png'>
 
@@ -75,9 +75,9 @@ Every user has a profile that record all their posts, and it also stores the val
  </table>
 
 ## Code Examples
----
+
 ## Future enhancements
----
+
 1. Create a modal option for the login screen
 2. Create and update the search bar to have more dynamic options
 3. Option for users to add a bio and avatar/profile picture
@@ -85,13 +85,13 @@ Every user has a profile that record all their posts, and it also stores the val
 5. Upload more than one picture for each post.
 
 ## Project Tools
----
+
 ### [Trello Board](https://trello.com/b/G8PbOsoL/sei-project-3)
 ### [Wireframes](https://www.figma.com/file/fnicF6E5dx9rpEh1OykUjT/Pictogram?node-id=0%3A1)
 ### [ERD](https://app.genmymodel.com/api/repository/lc9900/Instagram)
 
 ## Team Members
----
+
 [Edwin Hawk Yu](https://github.com/EdwinHawkYu)
 
 [Wasim Okadia](https://github.com/Wasimoak)
