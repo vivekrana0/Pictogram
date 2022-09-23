@@ -35,14 +35,47 @@ Live Link <----Insert the link
     The Unsplash API provids us with over 3 million free high-resolution images that are brought to us by the world’s most generous community of photographers.
     Our app uses the Usplah Api to provide the users with the ability to search through and locate the perfect image to use for thier post.
 <img src='https://i.imgur.com/mhy1mdv.png'>
+
+- Post details:
+    Our App users can edit and update their own posts. Users can make a comment, delete their own comments, give a like, and cancel the like that was given. 
+<table>
+  <tr>
+    <td>My Post Page</td>
+     <td>Other user's post page</td>
+  </tr>
+  <tr>
+    <td><img src="https://imgur.com/1ayZ645.png" width=300 height=330></td>
+    <td><img src="https://imgur.com/6GfXLUm.png" width=300 height=330></td>
+  </tr>
+ </table>
+
+ 
+
+- My profile:
+    Every user has a profile that record all their posts, and it also stores the values that counts the number of posts, the number of followings, and the number of followers. From other users' profile information, we can see a following/unfollow button.
+<img src="">
+<table>
+  <tr>
+    <td>My profile info</td>
+     <td>Other user's profile info</td>
+  </tr>
+  <tr>
+    <td><img src="https://imgur.com/DjHvJ1f.png" width=200 height=80></td>
+    <td><img src="https://imgur.com/wN6BPKX.png" width=200 height=80></td>
+  </tr>
+ </table>
+
 ## Code Examples
 
 ## Future enhancements
 1. Create a modal option for the login screen
 2. Create and update the search bar to have more dynamic options
+3. Option for users to add a bio and avatar/profile picture
+4. Profile can be set to private, so only followers can see your profile.
+5. Upload more than one picture for each post.
 
 ### Team Members
 - Edwin Hawk Yu
 - Wasim Okadia
-- 
+- Ruoyi Chen
 - 
