@@ -76,6 +76,37 @@ Every user has a profile that record all their posts, and it also stores the val
 
 ## Code Examples
 
+- The code snippet below is used to implement pulling 30 different images from the API Unsplash and adding them to the explore template.
+
+```
+def explore(request):
+  baseurl = "https://api.unsplash.com/search/photos?"
+  key = 'CNdf8VEf5G3eoTB71-GPl6XGzDK4xK1NwCeT4is8qBI'
+  variable = request.GET.get('explored')
+  image_data = requests.get('{baseurl}per_page=30&query={variable}&client_id={key}'.format(baseurl=baseurl, variable=variable, key=key)).json()
+  results = image_data['results']
+  return render(request, 'unsplash_api/explore.html', {'results':results})
+```
+- The code snippet below is used to determine if a post has been liked by a specific user. This function also provides the count of likes per post and is used in the detail template.
+
+```
+def likes(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+    likes = post.likes
+    check_ifliked = Like.objects.filter(liker=user, post_liked=post).count()
+    if check_ifliked:
+        Like.objects.filter(liker=user, post_liked=post_id).delete()
+        likes = likes - 1
+    else:
+        Like.objects.create(liker=user, post_liked=post)
+        likes = likes + 1
+    post.likes = likes
+    post.save()
+    print(likes)
+    return redirect('detail', post_id=post_id)
+```
+
 ## Future enhancements
 
 1. Create a modal option for the login screen
