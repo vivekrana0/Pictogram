@@ -43,7 +43,7 @@ Access the app through the link below:
 ### Unsplash API:
 
 ```The Unsplash API provids us with over 3 million free high-resolution images that are brought to us by the world’s most generous community of photographers.
-Our app uses the Usplah Api to provide the users with the ability to search through and locate the perfect image to use for thier post.
+Our app uses the Usplah Api to provide the users with the ability to search through and locate the perfect image to use for their post.
 ```
 <img src='https://i.imgur.com/mhy1mdv.png'>
 
